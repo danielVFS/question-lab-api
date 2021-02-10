@@ -12,10 +12,12 @@ class CreateQuestionService {
   public async execute({ title, description }: IRequest): Promise<Question> {
     const questionsRepository = getCustomRepository(QuestionsRepository);
 
-    const question = await questionsRepository.create({
+    const question = questionsRepository.create({
       title,
       description,
     });
+
+    await questionsRepository.save(question);
 
     return question;
   }
