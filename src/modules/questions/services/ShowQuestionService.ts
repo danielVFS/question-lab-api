@@ -14,7 +14,7 @@ class ShowQuestionService {
   public async execute({ id }: IRequest): Promise<Question> {
     const questionsRepository = getCustomRepository(QuestionsRepository);
 
-    const question = await questionsRepository.findById(id);
+    const question = await questionsRepository.findOne(id);
 
     if (!question) {
       throw new ErrorHandler('Question not found!');
