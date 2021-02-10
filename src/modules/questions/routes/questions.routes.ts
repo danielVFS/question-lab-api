@@ -10,5 +10,6 @@ questionRoutes.post('/', questionsController.create);
 questionRoutes.get('/', questionsController.index);
 questionRoutes.get('/:id', questionsController.show);
 questionRoutes.put('/:id', questionsController.update);
+questionRoutes.delete('/:id', questionsController.delete);
 
 export default questionRoutes;

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import CreateQuestionService from '../services/CreateQuestionService';
+import DeleteQuestionService from '../services/DeleteQuestionService';
 import ListQuestionsService from '../services/ListQuestionsService';
 import ShowQuestionService from '../services/ShowQuestionService';
 import UpdateQuestionService from '../services/UpdateQuestionService';
@@ -41,6 +42,16 @@ export default class QuestionsController {
     const updateQuestion = new UpdateQuestionService();
 
     const question = await updateQuestion.execute({ id, title, description });
+
+    return response.json(question);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const deleteQuestion = new DeleteQuestionService();
+
+    const question = await deleteQuestion.execute({ id });
 
     return response.json(question);
   }
